@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversonal - Complete Control Over Every Customer Touchpoint</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="{{ asset('images/conversonal_logo.png') }}" alt="Conversonal Logo" class="primary-logo">
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-right">
+                <a href="#contact" class="nav-link">Contact Us</a>
+                <a href="#cta" class="btn-primary">Get Access</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const navRight = document.querySelector('.nav-right');
+            
+            menuToggle.addEventListener('click', function() {
+                navRight.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+            
+            // Close menu when clicking on a link
+            const navLinks = document.querySelectorAll('.nav-link, .btn-primary');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navRight.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                });
+            });
+        });
+    </script>    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1 class="hero-heading">
+                <span class="heading-line">Complete Control Over</span>
+                <span class="heading-line">Every Customer Touchpoint</span>
+            </h1>
+            <p class="hero-paragraph">
+                Transform your customer communication with intelligent workflow automation. Streamline and manage every relevant conversation across WhatsApp, SMS, Email, and Voice — all with pre-grande deliverability.
+            </p>
+            <a href="#cta" class="btn-cta">
+                Get Access
+                <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.16666 10H15.8333" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <svg class="feature-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="10" cy="10" r="10" fill="#800000"/>
+                        <path d="M6 10L9 13L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>No credit card required</span>
+                </div>
+                <div class="hero-feature">
+                    <svg class="feature-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="10" cy="10" r="10" fill="#800000"/>
+                        <path d="M6 10L9 13L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Limited beta spots available</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="features-header">
+                <h2 class="section-heading">Everything you need to scale<br>customer communication</h2>
+                <p class="section-paragraph">Built for modern teams who demand performance, reliability, and simplicity at a fair price.</p>
+            </div>
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon-container">
+                        <svg width="43" height="54" viewBox="0 0 43 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25.625 45.625H24.375C17.305 45.625 13.7675 45.625 11.5725 43.4275C9.375 41.2325 9.375 37.695 9.375 30.625V25.625M9.375 25.625V23.125M9.375 25.625H25.625" stroke="#800000" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M25.625 25.625C25.625 22.68 25.625 21.205 26.5025 20.29C27.385 19.375 28.8 19.375 31.625 19.375H34.625C37.4525 19.375 38.8675 19.375 39.745 20.29C40.625 21.205 40.625 22.68 40.625 25.625C40.625 28.57 40.625 30.045 39.745 30.96C38.87 31.875 37.4525 31.875 34.625 31.875H31.625C28.7975 31.875 27.3825 31.875 26.5025 30.96C25.6225 30.045 25.625 28.57 25.625 25.625ZM25.625 45.625C25.625 42.68 25.625 41.205 26.5025 40.29C27.385 39.375 28.8 39.375 31.625 39.375H34.625C37.4525 39.375 38.8675 39.375 39.745 40.29C40.625 41.205 40.625 42.68 40.625 45.625C40.625 48.57 40.625 50.045 39.745 50.96C38.87 51.875 37.4525 51.875 34.625 51.875H31.625C28.7975 51.875 27.3825 51.875 26.5025 50.96C25.6225 50.045 25.625 48.57 25.625 45.625Z" stroke="#800000" stroke-width="3.75"/>
+                            <path d="M9.375 1.875V16.875M16.875 9.375H1.875" stroke="#800000" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-heading">Advanced Sequence Automation</h3>
+                    <p class="feature-paragraph">Automate customer outreach with intelligent triggers based on user behavior, life events, and custom conditions.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon-container">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.5 47.5H47.5V2.5H32.5C30.845 6.44833 28.345 8.4225 25 8.4225C21.655 8.4225 19.155 6.44833 17.5 2.5H2.5V47.5Z" stroke="#800000" stroke-width="5" stroke-linejoin="round"/>
+                            <path d="M13.75 25L21.25 32.5L36.25 17.5" stroke="#800000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-heading">High Deliverability Globally</h3>
+                    <p class="feature-paragraph">Ensure your messages reach customers with enterprise-grade infrastructure optimized for deliverability and performance across all your customers' use cases.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon-container">
+                        <svg width="54" height="52" viewBox="0 0 54 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M26.8861 21.875H26.9061M36.8736 21.875H36.8961M16.8961 21.875H16.9186" stroke="#800000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M31.7989 1.92262C26.62 1.82619 21.4393 1.88455 16.2639 2.09762C10.1639 2.35762 7.11391 2.48762 4.69891 4.91762C2.28641 7.35012 2.18141 10.3176 1.97391 16.2501C1.84203 19.999 1.84203 23.7513 1.97391 27.5001C2.18141 33.4326 2.28641 36.4001 4.69891 38.8301C7.11141 41.2626 10.1639 41.3926 16.2639 41.6551L16.8739 41.6801V47.5501C16.8741 47.8991 16.9742 48.2406 17.1626 48.5344C17.3509 48.8281 17.6195 49.0617 17.9366 49.2075C18.2536 49.3532 18.6058 49.405 18.9514 49.3568C19.2969 49.3085 19.6214 49.1622 19.8864 48.9351L25.3364 44.2626C26.7039 43.0876 27.3889 42.5026 28.2039 42.1926C29.0189 41.8826 29.9439 41.8651 31.7964 41.8301C33.7481 41.7918 35.6439 41.7335 37.4839 41.6551C43.5839 41.3926 46.6339 41.2626 49.0489 38.8301C51.4614 36.4001 51.5664 33.4326 51.7739 27.5001C51.8548 25.2094 51.8865 22.9172 51.8689 20.6251" stroke="#800000" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M51.8737 8.125C51.8737 9.7826 51.2152 11.3723 50.0431 12.5444C48.871 13.7165 47.2813 14.375 45.6237 14.375C43.9661 14.375 42.3763 13.7165 41.2042 12.5444C40.0321 11.3723 39.3737 9.7826 39.3737 8.125C39.3737 6.4674 40.0321 4.87769 41.2042 3.70558C42.3763 2.53348 43.9661 1.875 45.6237 1.875C47.2813 1.875 48.871 2.53348 50.0431 3.70558C51.2152 4.87769 51.8737 6.4674 51.8737 8.125Z" stroke="#800000" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-heading">Unified Inbox for Whatsapp,<br>SMS, Email, and Voice</h3>
+                    <p class="feature-paragraph">Manage all customer conversations from a single unified inbox across every communication channel.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon-container">
+                        <svg width="54" height="52" viewBox="0 0 54 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M26.8861 21.875H26.9061M36.8736 21.875H36.8961M16.8961 21.875H16.9186" stroke="#800000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M31.7989 1.92262C26.62 1.82619 21.4393 1.88455 16.2639 2.09762C10.1639 2.35762 7.11391 2.48762 4.69891 4.91762C2.28641 7.35012 2.18141 10.3176 1.97391 16.2501C1.84203 19.999 1.84203 23.7513 1.97391 27.5001C2.18141 33.4326 2.28641 36.4001 4.69891 38.8301C7.11141 41.2626 10.1639 41.3926 16.2639 41.6551L16.8739 41.6801V47.5501C16.8741 47.8991 16.9742 48.2406 17.1626 48.5344C17.3509 48.8281 17.6195 49.0617 17.9366 49.2075C18.2536 49.3532 18.6058 49.405 18.9514 49.3568C19.2969 49.3085 19.6214 49.1622 19.8864 48.9351L25.3364 44.2626C26.7039 43.0876 27.3889 42.5026 28.2039 42.1926C29.0189 41.8826 29.9439 41.8651 31.7964 41.8301C33.7481 41.7918 35.6439 41.7335 37.4839 41.6551C43.5839 41.3926 46.6339 41.2626 49.0489 38.8301C51.4614 36.4001 51.5664 33.4326 51.7739 27.5001C51.8548 25.2094 51.8865 22.9172 51.8689 20.6251" stroke="#800000" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M51.8737 8.125C51.8737 9.7826 51.2152 11.3723 50.0431 12.5444C48.871 13.7165 47.2813 14.375 45.6237 14.375C43.9661 14.375 42.3763 13.7165 41.2042 12.5444C40.0321 11.3723 39.3737 9.7826 39.3737 8.125C39.3737 6.4674 40.0321 4.87769 41.2042 3.70558C42.3763 2.53348 43.9661 1.875 45.6237 1.875C47.2813 1.875 48.871 2.53348 50.0431 3.70558C51.2152 4.87769 51.8737 6.4674 51.8737 8.125Z" stroke="#800000" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-heading">Fair Pricing</h3>
+                    <p class="feature-paragraph">Transparent pricing that scales with a simple, unified inbox that alert consumers across message channels.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section" id="cta">
+            <div class="cta-container">
+                <h2 class="cta-heading">Ready to transform your<br>customer communication?</h2>
+                <p class="cta-paragraph">Get notified when we launch and help shape a new way to<br>manage customer conversations.</p>
+                <form class="cta-form">
+                    <input type="email" class="email-input" placeholder="Enter your work email" required>
+                    <button type="submit" class="btn-submit">
+                        Get Access
+                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.16666 10H15.8333" stroke="#800000" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="#800000" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </form>
+                <p class="cta-note">Limited spots available for early access.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo-container">
+                        <img src="{{ asset('images/conversonal_logo.png') }}" alt="Conversonal Logo" class="primary-logo">
+                    </div>
+                    <p class="footer-description">Unified customer communication platform for modern teams.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-heading">Contact</h4>
+                    <ul class="footer-list">
+                        <li><a href="mailto:contact@conversonal.com">contact@conversonal.com</a></li>
+                    </ul>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">
+                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 18C0 8.05887 8.05887 0 18 0C27.9411 0 36 8.05887 36 18C36 27.9411 27.9411 36 18 36C8.05887 36 0 27.9411 0 18Z" fill="#F3F4F6"/>
+                                <path d="M24.6667 12.6666C24.6667 12.6666 24.2 14.0666 23.3334 14.9333C24.4 21.5999 17.0667 26.4666 11.3334 22.6666C12.8 22.7333 14.2667 22.2666 15.3334 21.3333C12 20.3333 10.3334 16.3999 12 13.3333C13.4667 15.0666 15.7334 16.0666 18 15.9999C17.4 13.1999 20.6667 11.5999 22.6667 13.4666C23.4 13.4666 24.6667 12.6666 24.6667 12.6666Z" stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 18C0 8.05887 8.05887 0 18 0C27.9411 0 36 8.05887 36 18C36 27.9411 27.9411 36 18 36C8.05887 36 0 27.9411 0 18Z" fill="#F3F4F6"/>
+                                <path d="M20.6666 15.3333C21.7275 15.3333 22.7449 15.7547 23.4951 16.5048C24.2452 17.255 24.6666 18.2724 24.6666 19.3333V23.9999H22V19.3333C22 18.9796 21.8595 18.6405 21.6094 18.3904C21.3594 18.1404 21.0202 17.9999 20.6666 17.9999C20.313 17.9999 19.9739 18.1404 19.7238 18.3904C19.4738 18.6405 19.3333 18.9796 19.3333 19.3333V23.9999H16.6666V19.3333C16.6666 18.2724 17.0881 17.255 17.8382 16.5048C18.5883 15.7547 19.6058 15.3333 20.6666 15.3333Z" stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M14 16H11.3334V24H14V16Z" stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12.6667 13.9999C13.4031 13.9999 14 13.403 14 12.6666C14 11.9302 13.4031 11.3333 12.6667 11.3333C11.9303 11.3333 11.3334 11.9302 11.3334 12.6666C11.3334 13.403 11.9303 13.9999 12.6667 13.9999Z" stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-heading">Legal</h4>
+                    <ul class="footer-list">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 Conversonal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
