@@ -1,3 +1,48 @@
+{# Add smooth scroll for #cta links #}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function customScrollTo(targetId) {
+            var target = document.getElementById(targetId);
+            if (!target) return;
+            var start = window.pageYOffset;
+            var end = target.getBoundingClientRect().top + window.pageYOffset;
+            var duration = 500; // 0.5s
+            var startTime = null;
+            function easeIn(t) {
+                return t * t;
+            }
+            function animateScroll(currentTime) {
+                if (!startTime) startTime = currentTime;
+                var timeElapsed = currentTime - startTime;
+                var progress = Math.min(timeElapsed / duration, 1);
+                var ease = easeIn(progress);
+                window.scrollTo(0, start + (end - start) * ease);
+                if (progress < 1) {
+                    requestAnimationFrame(animateScroll);
+                }
+            }
+            requestAnimationFrame(animateScroll);
+        }
+        document.querySelectorAll('a[href="#contact"]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                var target = document.getElementById('contact');
+                if (target) {
+                    e.preventDefault();
+                    customScrollTo('contact');
+                }
+            });
+        });
+        document.querySelectorAll('a[href="#cta"]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                var target = document.getElementById('cta');
+                if (target) {
+                    e.preventDefault();
+                    customScrollTo('cta');
+                }
+            });
+        });
+    });
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,33 +56,27 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navigation">
-        <div class="nav-container">
-            <div class="logo-container">
-                <img src="{{ asset('images/conversonal_logo.png') }}" alt="Conversonal Logo" class="primary-logo">
-            </div>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <div class="nav-right">
-                <a href="#contact" class="nav-link">Contact Us</a>
-                <a href="#cta" class="btn-primary">Get Access</a>
-            </div>
-        </div>
-    </nav>
+    {% include 'components/_navigation.html.twig' %}
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.querySelector('.mobile-menu-toggle');
             const navRight = document.querySelector('.nav-right');
-            
+            const modal = document.getElementById('betaModal');
+            const openBtn = document.getElementById('openModalBtn');
+            const closeBtn = document.querySelector('.modal-close');
+            // Open modal for all .open-signup-modal links
+            document.querySelectorAll('.open-signup-modal').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
             menuToggle.addEventListener('click', function() {
                 navRight.classList.toggle('active');
                 menuToggle.classList.toggle('active');
             });
-            
             // Close menu when clicking on a link
             const navLinks = document.querySelectorAll('.nav-link, .btn-primary');
             navLinks.forEach(link => {
@@ -58,8 +97,9 @@
             <p class="hero-paragraph">
                 Transform your customer communication with intelligent workflow automation. Streamline and manage every relevant conversation across WhatsApp, SMS, Email, and Voice — all with pre-grande deliverability.
             </p>
+            {# <a href="#" class="btn-cta open-signup-modal"> #}
             <a href="#cta" class="btn-cta">
-                Get Access
+                Learn More
                 <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4.16666 10H15.8333" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
@@ -148,68 +188,111 @@
             <div class="cta-container">
                 <h2 class="cta-heading">Ready to transform your<br>customer communication?</h2>
                 <p class="cta-paragraph">Get notified when we launch and help shape a new way to<br>manage customer conversations.</p>
-                <form class="cta-form">
-                    <input type="email" class="email-input" placeholder="Enter your work email" required>
-                    <button type="submit" class="btn-submit">
-                        Get Access
+                <div class="cta-form">
+                    <button type="button" class="btn-submit" id="openModalBtn">
+                        Get Notified for Beta
                         <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4.16666 10H15.8333" stroke="#800000" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="#800000" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
-                </form>
+                </div>
                 <p class="cta-note">Limited spots available for early access.</p>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer" id="contact">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="logo-container">
-                        <img src="{{ asset('images/conversonal_logo.png') }}" alt="Conversonal Logo" class="primary-logo">
-                    </div>
-                    <p class="footer-description">Unified customer communication platform for modern teams.</p>
+    <!-- Beta Signup Modal -->
+    <div id="betaModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            
+            <div class="modal-header">
+                <h2 class="modal-heading">Get notified when Conversonal goes live</h2>
+                <p class="modal-paragraph">Get early access and shape the product</p>
+            </div>
+
+            {% if success %}
+                <div class="alert alert-success">
+                    <p>✓ Thank you for signing up! We'll be in touch soon.</p>
+                </div>
+            {% endif %}
+
+            {% if error %}
+                <div class="alert alert-error">
+                    <p>{{ error }}</p>
+                </div>
+            {% endif %}
+
+            <form class="modal-form" action="{{ path('landing_page') }}" method="POST">
+                <div class="form-grid">
+                    <input type="text" name="first_name" class="form-input" placeholder="First Name" required>
+                    <input type="email" name="work_email" class="form-input" placeholder="Work Email" required>
+                    <input type="text" name="last_name" class="form-input" placeholder="Last Name" required>
+                    <input type="tel" name="phone_number" class="form-input" placeholder="Phone Number" required>
                 </div>
                 
-                <div class="footer-column">
-                    <h4 class="footer-heading">Contact</h4>
-                    <ul class="footer-list">
-                        <li><a href="mailto:contact@conversonal.com">contact@conversonal.com</a></li>
-                    </ul>
-                    <div class="footer-social">
-                        <a href="#" class="social-link">
-                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 18C0 8.05887 8.05887 0 18 0C27.9411 0 36 8.05887 36 18C36 27.9411 27.9411 36 18 36C8.05887 36 0 27.9411 0 18Z" fill="#F3F4F6"/>
-                                <path d="M24.6667 12.6666C24.6667 12.6666 24.2 14.0666 23.3334 14.9333C24.4 21.5999 17.0667 26.4666 11.3334 22.6666C12.8 22.7333 14.2667 22.2666 15.3334 21.3333C12 20.3333 10.3334 16.3999 12 13.3333C13.4667 15.0666 15.7334 16.0666 18 15.9999C17.4 13.1999 20.6667 11.5999 22.6667 13.4666C23.4 13.4666 24.6667 12.6666 24.6667 12.6666Z" stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link">
-                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 18C0 8.05887 8.05887 0 18 0C27.9411 0 36 8.05887 36 18C36 27.9411 27.9411 36 18 36C8.05887 36 0 27.9411 0 18Z" fill="#F3F4F6"/>
-                                <path d="M20.6666 15.3333C21.7275 15.3333 22.7449 15.7547 23.4951 16.5048C24.2452 17.255 24.6666 18.2724 24.6666 19.3333V23.9999H22V19.3333C22 18.9796 21.8595 18.6405 21.6094 18.3904C21.3594 18.1404 21.0202 17.9999 20.6666 17.9999C20.313 17.9999 19.9739 18.1404 19.7238 18.3904C19.4738 18.6405 19.3333 18.9796 19.3333 19.3333V23.9999H16.6666V19.3333C16.6666 18.2724 17.0881 17.255 17.8382 16.5048C18.5883 15.7547 19.6058 15.3333 20.6666 15.3333Z" stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M14 16H11.3334V24H14V16Z" stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M12.6667 13.9999C13.4031 13.9999 14 13.403 14 12.6666C14 11.9302 13.4031 11.3333 12.6667 11.3333C11.9303 11.3333 11.3334 11.9302 11.3334 12.6666C11.3334 13.403 11.9303 13.9999 12.6667 13.9999Z" stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="footer-column">
-                    <h4 class="footer-heading">Legal</h4>
-                    <ul class="footer-list">
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p class="copyright">© 2026 Conversonal. All rights reserved.</p>
-            </div>
+                <button type="submit" class="btn-modal-submit">
+                    Get Access
+                    <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.16666 10H15.8333" stroke="#800000" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="#800000" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </form>
         </div>
-    </footer>
+    </div>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('betaModal');
+        const openBtn = document.getElementById('openModalBtn');
+        const closeBtn = document.querySelector('.modal-close');
+
+        openBtn.addEventListener('click', function() {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeBtn.addEventListener('click', function() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Auto-open modal if there's a success or error message
+        {% if success or error %}
+        window.addEventListener('DOMContentLoaded', function() {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Auto-close success message after 5 seconds
+            {% if success %}
+            setTimeout(function() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }, 5000);
+            {% endif %}
+        });
+        {% endif %}
+    </script>
+
+    <!-- Footer -->
+    {% include 'components/_footer.html.twig' %}
 </body>
 </html>

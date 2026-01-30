@@ -1,0 +1,23 @@
+<nav class="navigation">
+    <div class="nav-container">
+        <div class="logo-container">
+            <a href="{{ path('landing_page') }}">
+                <img src="{{ asset('images/conversonal_logo.png') }}" alt="Conversonal Logo" class="primary-logo">
+            </a>
+        </div>
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-right">
+            {% if app.request.attributes.get('_route') == 'landing_page' %}
+                <a href="#contact" class="nav-link">Contact Us</a>
+                <a href="#cta" class="btn-primary">Learn More</a>
+            {% else %}
+                <a href="{{ path('landing_page') }}#contact" class="nav-link">Contact Us</a>
+                <a href="{{ path('landing_page') }}#cta" class="btn-primary">Learn More</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
