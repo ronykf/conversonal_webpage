@@ -12,10 +12,12 @@
         </button>
         <div class="nav-right">
             {% if app.request.attributes.get('_route') == 'landing_page' %}
-                <a href="#contact" class="nav-link">Contact Us</a>
+                {# <a href="#contact" class="nav-link">Contact Us</a> #}
+                <a href="mailto:contact@conversonal.com" class="nav-link">Contact Us</a>
                 <a href="#cta" class="btn-primary">Learn More</a>
             {% else %}
-                <a href="{{ path('landing_page') }}#contact" class="nav-link">Contact Us</a>
+                {# <a href="{{ path('landing_page') }}#contact" class="nav-link">Contact Us</a> #}
+                <a href="mailto:contact@conversonal.com" class="nav-link">Contact Us</a>
                 <a href="{{ path('landing_page') }}#cta" class="btn-primary">Learn More</a>
             {% endif %}
         </div>
