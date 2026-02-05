@@ -104,7 +104,7 @@ menuToggle.classList.remove('active');
 					<span class="heading-line">Every Customer Touchpoint</span>
 				</h1>
 				<p class="hero-paragraph">
-					Transform your customer communication with intelligent workflow automation. Streamline and manage every relevant conversation across WhatsApp, SMS, Email, and Voice — all with pre-grande deliverability.
+					Transform your customer communication with intelligent workflow automation. Streamline and manage every relevant conversation across WhatsApp, SMS, Email, and Voice — all with maximum deliverability.
 				</p>
 				{# <a href="#" class="btn-cta open-signup-modal"> #}
 				<a href="#cta" class="btn-cta">
@@ -251,7 +251,14 @@ menuToggle.classList.remove('active');
 						<input type="text" name="first_name" class="form-input" placeholder="First Name" required>
 						<input type="email" name="work_email" class="form-input" placeholder="Work Email" required>
 						<input type="text" name="last_name" class="form-input" placeholder="Last Name" required>
-						<input type="tel" name="phone_number" class="form-input" placeholder="Phone Number" required>
+						<div class="phone-input-group">
+							<select name="country_code" class="country-code-select" required>
+								{% for country in countryCodes %}
+									<option value="{{ country.code }}">{{ country.country[:3]|upper }} {{ country.code }}</option>
+								{% endfor %}
+							</select>
+							<input type="tel" name="phone_number" class="form-input phone-input" placeholder="Phone Number" required>
+						</div>
 					</div>
 
 					<button type="submit" class="btn-modal-submit">

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\BetaSignup;
 use App\Repository\BetaSignupRepository;
+use App\Service\CountryCodeService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,7 +17,8 @@ class LandingPageController extends AbstractController
     public function index(
         Request $request,
         EntityManagerInterface $entityManager,
-        BetaSignupRepository $betaSignupRepository
+        BetaSignupRepository $betaSignupRepository,
+        CountryCodeService $countryCodeService
     ): Response {
         $success = false;
         $error = null;
@@ -25,6 +27,7 @@ class LandingPageController extends AbstractController
             $firstName = $request->request->get('first_name');
             $lastName = $request->request->get('last_name');
             $workEmail = $request->request->get('work_email');
+            $countryCode = $request->request->get('country_code');
             $phoneNumber = $request->request->get('phone_number');
 
             // Validate inputs
@@ -40,7 +43,8 @@ class LandingPageController extends AbstractController
                 $betaSignup->setFirstName(htmlspecialchars(trim($firstName)));
                 $betaSignup->setLastName(htmlspecialchars(trim($lastName)));
                 $betaSignup->setWorkEmail(strtolower(trim($workEmail)));
-                $betaSignup->setPhoneNumber(htmlspecialchars(trim($phoneNumber)));
+                $fullPhoneNumber = $countryCode . ' ' . trim($phoneNumber);
+                $betaSignup->setPhoneNumber(htmlspecialchars($fullPhoneNumber));
 
                 $entityManager->persist($betaSignup);
                 $entityManager->flush();
@@ -52,6 +56,7 @@ class LandingPageController extends AbstractController
         return $this->render('landing_page/index.html.twig', [
             'success' => $success,
             'error' => $error,
+            'countryCodes' => $countryCodeService->getCountryCodes(),
         ]);
     }
 }
