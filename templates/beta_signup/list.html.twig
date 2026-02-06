@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Beta Signup List - Conversonal</title>
+		<link rel="icon" href="{{ asset('images/conversonal_icon.png') }}" type="image/x-icon">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="{{ asset('css/landing.css') }}">
+		<style>
+			.list-container {
+				min-height: 100vh;
+				background: linear-gradient(180deg, #FFFFFF 0%, #F9FAFB 100%);
+				padding: 48px 24px;
+			}
+
+			.list-wrapper {
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+
+			.list-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 32px;
+				flex-wrap: wrap;
+				gap: 16px;
+			}
+
+			.list-title {
+				font-family: 'Lexend', sans-serif;
+				font-weight: 500;
+				font-size: 36px;
+				line-height: 44px;
+				letter-spacing: -0.9px;
+				color: #101828;
+			}
+
+			.list-count {
+				font-family: 'Lexend', sans-serif;
+				font-weight: 400;
+				font-size: 16px;
+				color: #4A5565;
+				margin-top: 8px;
+			}
+
+			.header-actions {
+				display: flex;
+				gap: 12px;
+			}
+
+			.btn-action {
+				font-family: 'Lexend', sans-serif;
+				font-weight: 500;
+				font-size: 14px;
+				padding: 10px 20px;
+				border-radius: 8px;
+				border: none;
+				cursor: pointer;
+				transition: all 0.2s ease;
+				text-decoration: none;
+				display: inline-block;
+			}
+
+			.btn-logout {
+				background: #FFFFFF;
+				color: #800000;
+				border: 1px solid #800000;
+			}
+
+			.btn-logout:hover {
+				background: #FEE2E2;
+			}
+
+			.btn-home {
+				background: #800000;
+				color: #FFFFFF;
+			}
+
+			.btn-home:hover {
+				background: #660000;
+			}
+
+			.table-container {
+				background: #FFFFFF;
+				border-radius: 16px;
+				box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1);
+				overflow: hidden;
+			}
+
+			.table {
+				width: 100%;
+				border-collapse: collapse;
+			}
+
+			.table thead {
+				background: #F9FAFB;
+			}
+
+			.table th {
+				font-family: 'Lexend', sans-serif;
+				font-weight: 600;
+				font-size: 12px;
+				line-height: 16px;
+				letter-spacing: 0.05em;
+				text-transform: uppercase;
+				color: #6B7280;
+				text-align: left;
+				padding: 16px 24px;
+				border-bottom: 1px solid #E5E7EB;
+			}
+
+			.table td {
+				font-family: 'Lexend', sans-serif;
+				font-weight: 400;
+				font-size: 14px;
+				line-height: 20px;
+				color: #101828;
+				padding: 16px 24px;
+				border-bottom: 1px solid #F3F4F6;
+			}
+
+			.table tbody tr:hover {
+				background: #F9FAFB;
+			}
+
+			.table tbody tr:last-child td {
+				border-bottom: none;
+			}
+
+			.empty-state {
+				text-align: center;
+				padding: 64px 24px;
+			}
+
+			.empty-state-icon {
+				margin-bottom: 16px;
+			}
+
+			.empty-state-title {
+				font-family: 'Lexend', sans-serif;
+				font-weight: 500;
+				font-size: 20px;
+				color: #101828;
+				margin-bottom: 8px;
+			}
+
+			.empty-state-text {
+				font-family: 'Lexend', sans-serif;
+				font-size: 14px;
+				color: #6B7280;
+			}
+
+			.date-cell {
+				white-space: nowrap;
+			}
+
+			.email-cell {
+				color: #800000;
+				font-weight: 500;
+			}
+
+			@media (max-width: 768px) {
+				.list-title {
+					font-size: 28px;
+					line-height: 36px;
+				}
+
+				.table-container {
+					overflow-x: auto;
+				}
+
+				.table {
+					min-width: 800px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="list-container">
+			<div class="list-wrapper">
+				<div class="list-header">
+					<div>
+						<h1 class="list-title">Beta Signup List</h1>
+						<p class="list-count">{{ signups|length }} total signups</p>
+					</div>
+					<div class="header-actions">
+						<a href="{{ path('beta_signup_logout') }}" class="btn-action btn-logout">Logout</a>
+						<a href="{{ path('landing_page') }}" class="btn-action btn-home">Home</a>
+					</div>
+				</div>
+
+				<div class="table-container">
+					{% if signups|length > 0 %}
+						<table class="table">
+							<thead>
+								<tr>
+									<th>First Name</th>
+									<th>Last Name</th>
+									<th>Work Email</th>
+									<th>Phone Number</th>
+									<th>Created At</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for signup in signups %}
+									<tr>
+										<td>{{ signup.firstName }}</td>
+										<td>{{ signup.lastName }}</td>
+										<td class="email-cell">{{ signup.workEmail }}</td>
+										<td>{{ signup.phoneNumber }}</td>
+										<td class="date-cell">{{ signup.createdAt|date('Y-m-d H:i:s') }}</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					{% else %}
+						<div class="empty-state">
+							<div class="empty-state-icon">
+								<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<circle cx="24" cy="24" r="24" fill="#F3F4F6"/>
+									<path d="M24 16V32M16 24H32" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</div>
+							<h2 class="empty-state-title">No signups yet</h2>
+							<p class="empty-state-text">Beta signups will appear here once users start registering</p>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
