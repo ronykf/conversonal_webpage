@@ -6,6 +6,8 @@ var target = document.getElementById(targetId);
 if (! target) 
 return;
 
+
+
 var start = window.pageYOffset;
 var end = target.getBoundingClientRect().top + window.pageYOffset;
 var duration = 500; // 0.5s
@@ -16,6 +18,8 @@ return t * t;
 function animateScroll(currentTime) {
 if (! startTime) 
 startTime = currentTime;
+
+
 
 var timeElapsed = currentTime - startTime;
 var progress = Math.min(timeElapsed / duration, 1);
@@ -99,12 +103,17 @@ menuToggle.classList.remove('active');
 			class="main-content">
 			<!-- Hero Section -->
 			<section class="hero-section">
-				<h1 class="hero-heading">
-					<span class="heading-line">Complete Control Over</span>
-					<span class="heading-line">Every Customer Touchpoint</span>
+				<h1
+					class="hero-heading">
+					{# <span class="heading-line">Complete Control Over</span> #}
+					<span class="heading-line">Reach Your Customers</span>
+					{# <span class="heading-line">Every Customer Touchpoint</span> #}
+					<span class="heading-line">Wherever They Are</span>
 				</h1>
-				<p class="hero-paragraph">
-					Transform your customer communication with intelligent workflow automation. Streamline and manage every relevant conversation across WhatsApp, SMS, Email, and Voice — all with maximum deliverability.
+				<p
+					class="hero-paragraph">
+					{# Transform your customer communication with intelligent workflow automation. Streamline and manage every relevant conversation across WhatsApp, SMS, Email, and Voice — all with maximum deliverability. #}
+					Transform your customer communication with intelligent workflow automation. Design, personalize, and orchestrate messages across WhatsApp, SMS, Email, and Voice — all with maximum deliverability.
 				</p>
 				{# <a href="#" class="btn-cta open-signup-modal"> #}
 				<a href="#cta" class="btn-cta">
@@ -157,27 +166,42 @@ menuToggle.classList.remove('active');
 
 					<!-- Feature 2 -->
 					<div class="feature-card">
-						<div class="feature-icon-container">
-							<svg width="50" height="50" viewbox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M2.5 47.5H47.5V2.5H32.5C30.845 6.44833 28.345 8.4225 25 8.4225C21.655 8.4225 19.155 6.44833 17.5 2.5H2.5V47.5Z" stroke="#800000" stroke-width="5" stroke-linejoin="round"/>
-								<path d="M13.75 25L21.25 32.5L36.25 17.5" stroke="#800000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+						<div
+							class="feature-icon-container">
+							{# <svg width="50" height="50" viewbox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+																						<path d="M2.5 47.5H47.5V2.5H32.5C30.845 6.44833 28.345 8.4225 25 8.4225C21.655 8.4225 19.155 6.44833 17.5 2.5H2.5V47.5Z" stroke="#800000" stroke-width="5" stroke-linejoin="round"/>
+																						<path d="M13.75 25L21.25 32.5L36.25 17.5" stroke="#800000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+																					</svg> #}
+							<svg width="60" height="60" viewbox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M30.0124 26.25H30.0324M39.9999 26.25H40.0224M20.0224 26.25H20.0449" stroke="#800000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+								<path d="M34.9251 6.29762C29.7462 6.20119 24.5656 6.25955 19.3901 6.47262C13.2901 6.73262 10.2401 6.86262 7.82513 9.29262C5.41263 11.7251 5.30763 14.6926 5.10013 20.6251C4.96825 24.374 4.96825 28.1263 5.10013 31.8751C5.30763 37.8076 5.41263 40.7751 7.82513 43.2051C10.2376 45.6376 13.2901 45.7676 19.3901 46.0301L20.0001 46.0551V51.9251C20.0003 52.2741 20.1005 52.6156 20.2888 52.9094C20.4772 53.2031 20.7458 53.4367 21.0628 53.5825C21.3798 53.7282 21.732 53.78 22.0776 53.7318C22.4232 53.6835 22.7477 53.5372 23.0126 53.3101L28.4626 48.6376C29.8301 47.4626 30.5151 46.8776 31.3301 46.5676C32.1451 46.2576 33.0701 46.2401 34.9226 46.2051C36.8743 46.1668 38.7701 46.1085 40.6101 46.0301C46.7101 45.7676 49.7601 45.6376 52.1751 43.2051C54.5876 40.7751 54.6926 37.8076 54.9001 31.8751C54.981 29.5844 55.0127 27.2922 54.9951 25.0001" stroke="#800000" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+								<path d="M54.9999 12.5C54.9999 14.1576 54.3415 15.7473 53.1694 16.9194C51.9973 18.0915 50.4075 18.75 48.7499 18.75C47.0923 18.75 45.5026 18.0915 44.3305 16.9194C43.1584 15.7473 42.4999 14.1576 42.4999 12.5C42.4999 10.8424 43.1584 9.25269 44.3305 8.08058C45.5026 6.90848 47.0923 6.25 48.7499 6.25C50.4075 6.25 51.9973 6.90848 53.1694 8.08058C54.3415 9.25269 54.9999 10.8424 54.9999 12.5Z" stroke="#800000" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
 							</svg>
+
 						</div>
 						<h3 class="feature-heading">High Deliverability Globally</h3>
-						<p class="feature-paragraph">Ensure your messages reach customers with enterprise-grade infrastructure optimized for deliverability and performance across all your customers' use cases.</p>
+						{# <p class="feature-paragraph">Ensure your messages reach customers with enterprise-grade infrastructure optimized for deliverability and performance across all your customers' use cases.</p> #}
+						<p class="feature-paragraph">Ensure your messages reach customers with infrastructure optimized for deliverability and performance wherever they are.</p>
 					</div>
 
 					<!-- Feature 3 -->
 					<div class="feature-card">
-						<div class="feature-icon-container">
-							<svg width="54" height="52" viewbox="0 0 54 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M26.8861 21.875H26.9061M36.8736 21.875H36.8961M16.8961 21.875H16.9186" stroke="#800000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-								<path d="M31.7989 1.92262C26.62 1.82619 21.4393 1.88455 16.2639 2.09762C10.1639 2.35762 7.11391 2.48762 4.69891 4.91762C2.28641 7.35012 2.18141 10.3176 1.97391 16.2501C1.84203 19.999 1.84203 23.7513 1.97391 27.5001C2.18141 33.4326 2.28641 36.4001 4.69891 38.8301C7.11141 41.2626 10.1639 41.3926 16.2639 41.6551L16.8739 41.6801V47.5501C16.8741 47.8991 16.9742 48.2406 17.1626 48.5344C17.3509 48.8281 17.6195 49.0617 17.9366 49.2075C18.2536 49.3532 18.6058 49.405 18.9514 49.3568C19.2969 49.3085 19.6214 49.1622 19.8864 48.9351L25.3364 44.2626C26.7039 43.0876 27.3889 42.5026 28.2039 42.1926C29.0189 41.8826 29.9439 41.8651 31.7964 41.8301C33.7481 41.7918 35.6439 41.7335 37.4839 41.6551C43.5839 41.3926 46.6339 41.2626 49.0489 38.8301C51.4614 36.4001 51.5664 33.4326 51.7739 27.5001C51.8548 25.2094 51.8865 22.9172 51.8689 20.6251" stroke="#800000" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-								<path d="M51.8737 8.125C51.8737 9.7826 51.2152 11.3723 50.0431 12.5444C48.871 13.7165 47.2813 14.375 45.6237 14.375C43.9661 14.375 42.3763 13.7165 41.2042 12.5444C40.0321 11.3723 39.3737 9.7826 39.3737 8.125C39.3737 6.4674 40.0321 4.87769 41.2042 3.70558C42.3763 2.53348 43.9661 1.875 45.6237 1.875C47.2813 1.875 48.871 2.53348 50.0431 3.70558C51.2152 4.87769 51.8737 6.4674 51.8737 8.125Z" stroke="#800000" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+						<div
+							class="feature-icon-container">
+							{# <svg width="54" height="52" viewbox="0 0 54 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<path d="M26.8861 21.875H26.9061M36.8736 21.875H36.8961M16.8961 21.875H16.9186" stroke="#800000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+															<path d="M31.7989 1.92262C26.62 1.82619 21.4393 1.88455 16.2639 2.09762C10.1639 2.35762 7.11391 2.48762 4.69891 4.91762C2.28641 7.35012 2.18141 10.3176 1.97391 16.2501C1.84203 19.999 1.84203 23.7513 1.97391 27.5001C2.18141 33.4326 2.28641 36.4001 4.69891 38.8301C7.11141 41.2626 10.1639 41.3926 16.2639 41.6551L16.8739 41.6801V47.5501C16.8741 47.8991 16.9742 48.2406 17.1626 48.5344C17.3509 48.8281 17.6195 49.0617 17.9366 49.2075C18.2536 49.3532 18.6058 49.405 18.9514 49.3568C19.2969 49.3085 19.6214 49.1622 19.8864 48.9351L25.3364 44.2626C26.7039 43.0876 27.3889 42.5026 28.2039 42.1926C29.0189 41.8826 29.9439 41.8651 31.7964 41.8301C33.7481 41.7918 35.6439 41.7335 37.4839 41.6551C43.5839 41.3926 46.6339 41.2626 49.0489 38.8301C51.4614 36.4001 51.5664 33.4326 51.7739 27.5001C51.8548 25.2094 51.8865 22.9172 51.8689 20.6251" stroke="#800000" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+															<path d="M51.8737 8.125C51.8737 9.7826 51.2152 11.3723 50.0431 12.5444C48.871 13.7165 47.2813 14.375 45.6237 14.375C43.9661 14.375 42.3763 13.7165 41.2042 12.5444C40.0321 11.3723 39.3737 9.7826 39.3737 8.125C39.3737 6.4674 40.0321 4.87769 41.2042 3.70558C42.3763 2.53348 43.9661 1.875 45.6237 1.875C47.2813 1.875 48.871 2.53348 50.0431 3.70558C51.2152 4.87769 51.8737 6.4674 51.8737 8.125Z" stroke="#800000" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+														</svg> #}
+							<svg width="60" height="60" viewbox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M10 5C8.67392 5 7.40215 5.52678 6.46447 6.46447C5.52678 7.40215 5 8.67392 5 10V30H10V20H15V30H20V10C20 8.67392 19.4732 7.40215 18.5355 6.46447C17.5979 5.52678 16.3261 5 15 5H10ZM10 10H15V15H10M55 38.75V35C55 33.6739 54.4732 32.4021 53.5355 31.4645C52.5979 30.5268 51.3261 30 50 30H40V55H50C51.3261 55 52.5979 54.4732 53.5355 53.5355C54.4732 52.5979 55 51.3261 55 50V46.25C54.9747 45.2634 54.5715 44.3242 53.8736 43.6264C53.1758 42.9285 52.2366 42.5253 51.25 42.5C52.2366 42.4747 53.1758 42.0715 53.8736 41.3736C54.5715 40.6758 54.9747 39.7366 55 38.75ZM50 50H45V45H50V50ZM50 40H45V35H50M14.475 54.025L10.525 50.975L45.525 5.975L49.475 9.025L14.475 54.025Z" fill="#800000"/>
 							</svg>
+
 						</div>
-						<h3 class="feature-heading">Unified Inbox for Whatsapp,<br>SMS, Email, and Voice</h3>
-						<p class="feature-paragraph">Manage all customer conversations from a single unified inbox across every communication channel.</p>
+						{# <h3 class="feature-heading">Unified Inbox for Whatsapp,<br>SMS, Email, and Voice</h3> #}
+						<h3 class="feature-heading">Smart Hyper Personalization</h3>
+						{# <p class="feature-paragraph">Manage all customer conversations from a single unified inbox across every communication channel.</p> #}
+						<p class="feature-paragraph">Segment audiences, build highly personalized messages and sequences intelligently and test what works for each audience.</p>
 					</div>
 
 					<!-- Feature 4 -->
@@ -185,10 +209,10 @@ menuToggle.classList.remove('active');
 						<div
 							class="feature-icon-container">
 							{# <svg width="54" height="52" viewBox="0 0 54 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-							                            <path d="M26.8861 21.875H26.9061M36.8736 21.875H36.8961M16.8961 21.875H16.9186" stroke="#800000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-							                            <path d="M31.7989 1.92262C26.62 1.82619 21.4393 1.88455 16.2639 2.09762C10.1639 2.35762 7.11391 2.48762 4.69891 4.91762C2.28641 7.35012 2.18141 10.3176 1.97391 16.2501C1.84203 19.999 1.84203 23.7513 1.97391 27.5001C2.18141 33.4326 2.28641 36.4001 4.69891 38.8301C7.11141 41.2626 10.1639 41.3926 16.2639 41.6551L16.8739 41.6801V47.5501C16.8741 47.8991 16.9742 48.2406 17.1626 48.5344C17.3509 48.8281 17.6195 49.0617 17.9366 49.2075C18.2536 49.3532 18.6058 49.405 18.9514 49.3568C19.2969 49.3085 19.6214 49.1622 19.8864 48.9351L25.3364 44.2626C26.7039 43.0876 27.3889 42.5026 28.2039 42.1926C29.0189 41.8826 29.9439 41.8651 31.7964 41.8301C33.7481 41.7918 35.6439 41.7335 37.4839 41.6551C43.5839 41.3926 46.6339 41.2626 49.0489 38.8301C51.4614 36.4001 51.5664 33.4326 51.7739 27.5001C51.8548 25.2094 51.8865 22.9172 51.8689 20.6251" stroke="#800000" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-							                            <path d="M51.8737 8.125C51.8737 9.7826 51.2152 11.3723 50.0431 12.5444C48.871 13.7165 47.2813 14.375 45.6237 14.375C43.9661 14.375 42.3763 13.7165 41.2042 12.5444C40.0321 11.3723 39.3737 9.7826 39.3737 8.125C39.3737 6.4674 40.0321 4.87769 41.2042 3.70558C42.3763 2.53348 43.9661 1.875 45.6237 1.875C47.2813 1.875 48.871 2.53348 50.0431 3.70558C51.2152 4.87769 51.8737 6.4674 51.8737 8.125Z" stroke="#800000" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-							                        </svg> #}
+																					                            <path d="M26.8861 21.875H26.9061M36.8736 21.875H36.8961M16.8961 21.875H16.9186" stroke="#800000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+																					                            <path d="M31.7989 1.92262C26.62 1.82619 21.4393 1.88455 16.2639 2.09762C10.1639 2.35762 7.11391 2.48762 4.69891 4.91762C2.28641 7.35012 2.18141 10.3176 1.97391 16.2501C1.84203 19.999 1.84203 23.7513 1.97391 27.5001C2.18141 33.4326 2.28641 36.4001 4.69891 38.8301C7.11141 41.2626 10.1639 41.3926 16.2639 41.6551L16.8739 41.6801V47.5501C16.8741 47.8991 16.9742 48.2406 17.1626 48.5344C17.3509 48.8281 17.6195 49.0617 17.9366 49.2075C18.2536 49.3532 18.6058 49.405 18.9514 49.3568C19.2969 49.3085 19.6214 49.1622 19.8864 48.9351L25.3364 44.2626C26.7039 43.0876 27.3889 42.5026 28.2039 42.1926C29.0189 41.8826 29.9439 41.8651 31.7964 41.8301C33.7481 41.7918 35.6439 41.7335 37.4839 41.6551C43.5839 41.3926 46.6339 41.2626 49.0489 38.8301C51.4614 36.4001 51.5664 33.4326 51.7739 27.5001C51.8548 25.2094 51.8865 22.9172 51.8689 20.6251" stroke="#800000" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+																					                            <path d="M51.8737 8.125C51.8737 9.7826 51.2152 11.3723 50.0431 12.5444C48.871 13.7165 47.2813 14.375 45.6237 14.375C43.9661 14.375 42.3763 13.7165 41.2042 12.5444C40.0321 11.3723 39.3737 9.7826 39.3737 8.125C39.3737 6.4674 40.0321 4.87769 41.2042 3.70558C42.3763 2.53348 43.9661 1.875 45.6237 1.875C47.2813 1.875 48.871 2.53348 50.0431 3.70558C51.2152 4.87769 51.8737 6.4674 51.8737 8.125Z" stroke="#800000" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+																					                        </svg> #}
 							<svg width="60" height="60" viewbox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M47.2606 3.75001H32.8547C32.4069 3.74968 31.9771 3.92663 31.6594 4.24219L2.85938 33.0352C2.22893 33.6687 1.875 34.5261 1.875 35.4199C1.875 36.3137 2.22893 37.1711 2.85938 37.8047L16.5703 51.5156C17.2041 52.1462 18.0617 52.5001 18.9557 52.5001C19.8497 52.5001 20.7073 52.1462 21.341 51.5156L50.1328 22.7344C50.4484 22.4166 50.6253 21.9869 50.625 21.5391V7.125C50.6272 6.68208 50.5417 6.24309 50.3735 5.83333C50.2053 5.42357 49.9578 5.05112 49.6451 4.73743C49.3323 4.42374 48.9607 4.175 48.5514 4.00553C48.1422 3.83607 47.7035 3.74923 47.2606 3.75001Z" stroke="#800000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 								<path d="M41.25 16.875C40.5083 16.875 39.7833 16.6551 39.1666 16.243C38.5499 15.831 38.0693 15.2453 37.7855 14.5601C37.5016 13.8748 37.4274 13.1208 37.5721 12.3934C37.7168 11.666 38.0739 10.9978 38.5984 10.4734C39.1228 9.9489 39.791 9.59175 40.5184 9.44706C41.2458 9.30236 41.9998 9.37662 42.6851 9.66045C43.3703 9.94428 43.956 10.4249 44.368 11.0416C44.7801 11.6583 45 12.3833 45 13.125C45 14.1196 44.6049 15.0734 43.9017 15.7767C43.1984 16.4799 42.2446 16.875 41.25 16.875Z" fill="#800000"/>
@@ -254,7 +278,8 @@ menuToggle.classList.remove('active');
 						<div class="phone-input-group">
 							<select name="country_code" class="country-code-select" required>
 								{% for country in countryCodes %}
-									<option value="{{ country.code }}">{{ country.country[:3]|upper }} {{ country.code }}</option>
+									<option value="{{ country.code }}">{{ country.country[:3]|upper }}
+										{{ country.code }}</option>
 								{% endfor %}
 							</select>
 							<input type="tel" name="phone_number" class="form-input phone-input" placeholder="Phone Number" required>

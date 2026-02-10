@@ -238,7 +238,7 @@ a {
 }
 
 .features-header {
-    max-width: 672px;
+    /* max-width: 672px; */
     text-align: center;
     margin-bottom: 64px;
 }
